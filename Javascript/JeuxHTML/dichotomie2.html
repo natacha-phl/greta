@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeu dichotomie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #game {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game">
+        <h1>Jeu Dichotomie</h1>
+        <p>Devinez un nombre entre 1 et 100 !</p>
+        <input type="number" id="guess" min="1" max="100" />
+        <button onclick="makeGuess()">Deviner</button>
+        <!--  veut dire appel la fonction makeGuess quand on clique dessus -->
+        <p id="message"></p>
+        <button onclick="startGame()">Recommencer</button>
+    </div>
+
+    <script>
+        let randomNumber; // est une variable globale
+        let attempts = 0; // est une variable globale
+
+        // startGame est appelée lorque la page est chargée
+        function startGame() {
+            // changer le texte de la balise html d'id "message"
+            document.getElementById("message").innerText =
+                "Le jeu a commencé, faites votre premier essai !";
+            document.getElementById("guess").value = "";
+            // 1 - initialiser randomNumber
+
+
+            randomNumber = Math.floor(Math.random() * 101)
+
+            console.log(randomNumber)
+            // 2 - initialiser attemps
+        }
+
+        // startGame est appelée lorque on clique sur le bouton deviner
+        function makeGuess() {
+            // on récupère dans la variable guess le nombre entré par l'utilisateur
+            const guess = Number(document.getElementById("guess").value);
+
+            // 3 - Si le nombre entré n'est pas entre 1 et 100 ou n'est même pas un nombre, afficher : “votre nombre n'est pas correct”, recommencez !
+
+
+            if (guess > 1 && guess > 100) {
+
+                document.getElementById("message").innerText =
+                    "Votre nombre n'est pas correct, il faut un numéro entre 1 et 100 recommencez ! ";
+
+            }
+
+            if (guess === randomNumber) {
+                document.getElementById("message").innerText =
+                    "Bravo, vous avez trouvé !";
+
+
+            } else {
+
+
+
+
+                // 4 - Si le nombre entré est supérieur à randomNumber, afficher le message correspondant
+
+
+                if (guess > randomNumber) {
+
+                    document.getElementById("message").innerText =
+                        "Votre nombre est supérieur au nombre à deviner, recommencez ! Vous êtes à votre " + attempts + " essai(s)";
+
+                    attempts = attempts + 1;
+
+                    console.log(attempts);
+
+                }
+
+
+                // 5 - Si le nombre entré est inférieur à randomNumber, afficher le message correspondant
+
+                if (guess < randomNumber) {
+                    document.getElementById("message").innerText =
+                        "Votre nombre est inférieur au nombre à deviner, recommencez ! Vous êtes à votre " + attempts + " essai(s)";
+
+                    attempts = attempts + 1
+                    console.log(attempts)
+
+
+
+
+                }
+
+                // 6 - Si le nombre entré est égal à randonNumber, afficher le message correspondant
+
+                if (guess === randomNumber) {
+                    document.getElementById("message").innerText =
+                        "Bravo, vous avez trouvé !";
+
+
+                }
+            }
+        }
+
+        // Start the game when the page loads
+        window.onload = startGame;
+    </script>
+</body>
+
+</html>

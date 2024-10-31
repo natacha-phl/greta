@@ -1,0 +1,65 @@
+html <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Simple styling for layout */
+    .builder-container { display: flex; gap: 20px; }
+    .field-selector, .form-preview { width: 45%; }
+    .field-list { list-style: none; padding: 0; }
+    .field-item { margin-bottom: 10px; }
+    .button { margin-top: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="builder-container">
+    <!-- Zone de sélection des champs -->
+    <div class="field-selector">
+      <h2>Sélectionner un champ</h2>
+      <ul class="field-list">
+        <li class="field-item">
+          <button onclick="addField('text')">Nom</button>
+        </li>
+        <li class="field-item">
+          <button onclick="addField('email')">Email</button>
+        </li>
+        <li class="field-item">
+          <button onclick="addField('phone')">Téléphone</button>
+        </li>
+        <li class="field-item">
+          <button onclick="addField('date')">Date de Naissance</button>
+        </li>
+        <!-- Autres champs disponibles -->
+      </ul>
+    </div>
+
+    <!-- Zone de prévisualisation du formulaire -->
+    <div class="form-preview">
+      <h2>Formulaire Prévisualisation</h2>
+      <form id="form-container">
+        <!-- Les champs ajoutés apparaîtront ici dynamiquement -->
+      </form>
+      <button class="button" onclick="generateForm()">Générer Formulaire</button>
+      <button class="button" onclick="resetForm()">Effacer</button>
+    </div>
+  </div>
+
+  <script>
+    /* JavaScript pour ajouter et gérer les champs viendra ici */
+  </script>
+</body>
+</html>
+
+
+
+</head>
+<body>
+    
+</body>
+</html>
+
+
+<script>
+
+</script>

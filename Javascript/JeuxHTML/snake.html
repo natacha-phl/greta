@@ -1,0 +1,210 @@
+<!-- <!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Jeu Du Serpent</title>
+  </head>
+
+  <body>
+    <h1>SNAKE!!</h1>
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+    
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        ctx.lineWidth = 4;
+
+
+        const cercle = function(x, y, rayon, plein) {
+            ctx.beginPath();
+            ctx.arc(x, y, rayon, 0, Math.PI * 2, false);
+            if (plein) {
+            ctx.fill();
+            } else {
+            ctx.stroke();
+            }
+        };
+
+
+
+        ctx.strokeRect(0, 0, 500, 500);
+
+
+        ctx.strokeRect(300, 400, 30, 30);
+        //strokeRect(x, y, largeur, hauteur)
+
+                
+        let sX = 100;
+        let sY = 100;
+        let rayon = 30;
+
+        cercle(sX,sY,rayon,true)
+        // cercle(210,150,30,true)
+        // cercle(270,150,30,true)
+        // cercle(330,150,30,true)
+        // cercle(390,150,30,true)
+
+ 
+        //ctx.clearRect(sX-rayon, sY-rayon, rayon*2, rayon*2);   
+        //clearRect(x, y, width, height) 
+
+
+        const eraseCircle = (x,y,rayon) =>{
+            ctx.clearRect(x-rayon, y-rayon, rayon*2, rayon*2) ;
+        }
+
+
+        
+
+
+        const num = setInterval(()=>{
+        // 1- Effacer la boule courante (qui est à la position sX,sY)
+        eraseCircle(sX, sY, rayon);
+				// 2- Mettre à jour sX et sY : ajouter +10
+                sX +=40;
+                sY +=40
+				// 3- Dessiner une boule à la nouvelle position sX et sY
+
+                cercle(sX,sY,rayon,true)
+
+
+    },500)
+
+
+
+    </script>
+  </body>
+</html>
+ -->
+
+
+ 
+
+
+ <!DOCTYPE html>
+
+ <html>
+   <head>
+     <title>Jeu Du Serpent</title>
+   </head>
+ 
+   <style>
+   </style>
+ 
+   <body>
+     <h1>SNAKE!!</h1>
+     <!-- <div class="canvaContainer"> -->
+         <canvas id="canvas" width="500" height="500"></canvas>
+     <!-- </div> -->
+ 
+     <script>
+     
+         const canvas = document.getElementById("canvas");
+         const ctx = canvas.getContext("2d");
+         // ctx représente en javascript notre espace de dessin
+ 
+         // lineWidth est la largeur du trait, en pixels de tout ce qu'on va dessiner
+         ctx.lineWidth = 4;
+         const rayon = 10
+         let sX = 100 // position horizontale de la tête du snake
+         let sY = 100 // position verticale de la tête du snake
+         let refreshTime = 200 // temps utilisé dans le setInterval
+
+
+         let moveX = 20 // vitesse verticale
+         let moveY = 20 // vitesse horizontale
+
+
+          // le petit bug
+        let BX = 300
+        let BY = 300
+        let colorBug='blue'
+        ctx.fillStyle = colorBug
+        ctx.fillRect(BX,BY, 10, 10);
+
+ 
+         // cercle est une fonction qui nous aide à dessiner un cercle de centre x,y et de rayon 'rayon'. plein permet de le remplir de noir
+         const cercle = function(x, y, rayon, plein) {
+             ctx.beginPath();
+             ctx.arc(x, y, rayon, 0, Math.PI * 2, false);
+             if (plein) {
+             ctx.fill();
+             } else {
+             ctx.stroke();
+             }
+         };
+ 
+         // dessiner les contours du canva, qui seront les limites du jeu
+         ctx.strokeRect(0, 0, 500, 500);
+ 
+         // définition d'une fonction qui nous permet d'effacer un cercle avec clearRect
+         const eraseCircle =(x,y,rayon)=>{
+             // il faut décaler le rectangle d'effacement de "rayon"
+             ctx.clearRect(x-rayon,y-rayon,2*rayon,2*rayon)
+         } 
+
+ 
+         // fonction à executer à intervalle régulier pour faire bouger le serpent
+         const moveSnake = ()=>{ 
+             // 1- Effacer la boule courante (qui est à la position sX,sY)
+             eraseCircle(sX,sY,rayon)
+             // 2- Mettre à jour sX et sY : ajouter +10
+
+
+             document.body.addEventListener("keydown", (evenement) => {
+    // $("body").keydown(function(evenement) {
+        switch (evenement.keyCode) {
+          case 38: //HAUT
+          sY+=moveY;
+          // sY+=20;
+						// votre code ici pour changer la direction
+            break;
+          case 39: //DROIT
+            sX+=moveX;
+						// votre code ici pour changer la direction
+            break;
+          case 37: //GAUCHE
+            sX-=moveX;
+						// votre code ici pour changer la direction
+            break;
+          case 40: //BAS
+            sY-=moveY;
+						// votre code ici pour changer la direction
+						 break;
+        }
+      });
+
+       
+             if(sY>=500 || sX>=500 || sX<= 0 || sY <= 0){
+                 alert('vous avez crashé !')
+             }
+ 
+             // 3- Dessiner une boule à la nouvelle position sX et sY
+             cercle(sX,sY,rayon,true)
+         }
+ 
+         // utilisation de setInterval pour repeter moveSname toutes les 500ms
+         const num =  setInterval(moveSnake,refreshTime)
+
+         console.log(num);
+ 
+ 
+         // Autre façon d'utiliser setInterval, avec directement la fonction écrite à l'intérieur sans la nommer. On appelle cela une fonction anonyme
+ 
+         // const num =  setInterval(()=>{ 
+         //     eraseCircle(sX,sY,rayon)
+         //     sX+=20
+         //     if(sY===500 || sX===500){
+         //         alert('vous avez crashé !')
+         //     }
+         //     cercle(sX,sY,rayon,true)
+         // },refreshTime)
+
+
+ 
+ 
+     </script>
+   </body>
+ </html>

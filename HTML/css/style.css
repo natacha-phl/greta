@@ -1,0 +1,162 @@
+#mainBox {
+
+    width: 300px;
+    height: 300px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+
+}
+
+.boxes {
+
+    background-color: orange;
+    border : solid 3px;
+    margin: 2px;
+
+}
+
+
+#mainBox1 {
+
+    width: 300px;
+    height: 100px;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+
+
+}
+
+.boxes1 {
+
+    background-color: orange;
+    border : solid 3px;
+    margin: 2px;
+
+}
+
+
+
+#mainBox2 {
+
+    height: 100px;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+
+
+}
+
+.boxes2 {
+
+    background-color: orange;
+    border : solid 1px;
+    display: flex;
+
+}
+
+
+.sousBox2 {
+    background-color: yellow;
+    border: solid 1px;
+    margin: 2px;
+    display: flex;
+}
+
+
+#mainContainer {
+    border: solid 1px blue;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.catBox {
+    border: solid red 2px;
+    margin: 2px;
+    text-align: center;
+}
+
+
+.title {
+    background-color: aquamarine
+}
+
+img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+
+
+#mainContainer2 {
+    border: solid 1px blue;
+    display: flex;
+    overflow: scroll;
+
+
+}
+
+
+#mainContainer3 {
+    border: solid 1px blue;
+    display: flex;
+    overflow: scroll;
+
+
+}
+
+.catBox3 {
+    border: solid red 2px;
+    margin: 2px;
+    text-align: center;
+    flex-shrink: 0;
+    width: 28%;
+}
+
+
+
+
+.title3 {
+    background-color: greenyellow;
+}
+
+
+.catBox3 img {
+    width: 100%
+    
+}
+
+
+#main {
+
+
+background-image: url("../image/chat2.jpg.jpg");
+background-size: cover;
+height: 800px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+
+h3 {
+    color: orange;
+    font-size: 40px;
+}
+
+
+
+h4{
+    color: white;
+    font-size: 30px;}
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        #morpionArray {
+
+            display: flex;
+            flex-wrap: wrap;
+
+
+        }
+        .tile {
+
+            width: 30%;
+            height: 50px;
+            /* width: 30px;  */
+            border: solid grey;
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="morpionArray">
+
+    <div class="tile" id="0_0"></div>
+    <div class="tile" id="0_1"></div>
+    <div class="tile" id="0_2"></div>
+
+    <div class="tile" id="1_0"></div>
+    <div class="tile" id="1_1"></div>
+    <div class="tile" id="1_2"></div>
+
+
+    <div class="tile" id="2_0"></div>
+    <div class="tile" id="2_1"></div>
+    <div class="tile" id="3_2"></div>
+
+</div>
+
+    
+</body>
+</html>
+
+
+<script>
+let tiles = document.getElementsByClassName("tile");
+
+tiles = Array.from(tiles);
+
+console.log(tiles)
+
+const clickTile = (htmlEl, line, column) => {
+  console.log(htmlEl, line, column);
+// ON ECRIRA LA PLUPART DE NOTRE CODE ICI
+//
+};
+
+for (let i = 0; i < tiles.length; i++) {
+  const myTile = tiles[i];
+  myTile.addEventListener("click", () => {
+    myTile.innerHTML = "X";
+    const [l, c] = myTile.id.split("_");
+    clickTile(myTile, Number(l), Number(c));
+  });
+}
+
+
+</script>

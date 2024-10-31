@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>click me</title>
+</head>
+<style type="text/css">
+    body {
+        background-color: #b67332;
+    }
+
+    h1 {
+        color: white;
+        font-size: 200%;
+        cursor: pointer;
+        background-color: #93441a;
+        width: fit-content;
+        padding: 4px;
+        border-radius: 5px;
+        transition: all 0.2s;
+    }
+
+    h1:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+<body>
+    <h2>Jeu : clic me</h2>
+    <h1 id="titre">Click me 5 times!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+
+        let clickCount = 0;
+
+        const gestionclick = () => {
+            //console.log("you clicked me");
+
+
+            clickCount++
+            console.log(clickCount)
+
+
+            if (clickCount >= 5) {
+
+
+                alert("Vous avez gagné")
+                clickCount = 0;
+                return;
+                
+
+            }
+
+
+        };
+
+
+
+
+        const deplacerTitre = () => {
+
+            let randOffsetLeft = Math.floor(Math.random() * (500 - 100) + 100)
+            let randOffsetTop = Math.floor(Math.random() * (500 - 100) + 100)
+            let randFont = Math.floor(Math.random() * (50 - 10) + 10)
+
+            $("#titre").css("fontSize", randFont + "px");
+            $("#titre").offset({ left: randOffsetLeft });
+            $("#titre").offset({ top: randOffsetTop });
+            
+
+            //console.log(randOffsetTop, randOffsetLeft, randFont);
+
+        }
+
+
+        const repetition = () => {
+            setInterval(deplacerTitre, 2000)
+        }
+
+
+        $("#titre").click(gestionclick);
+
+
+
+
+        window.onload = repetition;
+    </script>
+</body>
+
+</html>
